@@ -24,18 +24,19 @@
             <div class="container">
                 <div class="card">
                     <div class="card-header">
-                        <div>
-                            <input type="text" placeholder="aggiungi le cose da fare...">
-
+                        <div class="position-relative">
+                            <input type="text" placeholder="aggiungi le cose da fare..." v-model.trim="newTodo">
+                            <div class="position-absolute btn btn-light " @click="addTodo()">aggiungi</div>
                         </div>
-                        
+
                     </div>
                     <div class="card-body">
                         <ul class="todo-list">
                             <li class="todo-items" :class="todo.done === true ?'text-decoration-line-through': ''"
-                                v-for="(todo,i) in todos">
+                                @click="done(todo)" v-for="(todo,i) in todos">
                                 {{todo.text}}
-                                <a href="#" ><i class="fa-solid fa-circle-xmark text-danger" @click="removeTodo(todo, i)"></i></a>
+                                <a href="#"><i class="fa-solid fa-circle-xmark text-danger"
+                                        @click="removeTodo(todo, i)"></i></a>
                             </li>
                         </ul>
                     </div>
