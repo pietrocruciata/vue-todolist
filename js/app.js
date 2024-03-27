@@ -3,40 +3,18 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            todos: [
-                {
-                    text: 'fare la spesa',
-                    done: false
-                },
-                {
-                    text: 'fare benzina',
-                    done: true
-                },
-                {
-                    text: 'tagliare i capelli',
-                    done: false
-                },
-                {
-                    text: 'prelevare',
-                    done: false
-                },
-                {
-                    text: 'passare da donato',
-                    done: true
-                }
-            ]
-
+            todos: [],
+            newTodo:''
         }
-
-
-
     },
 
+// TOGLIERE IL LIST ITEM SUL CLICK SELLA X
     methods: {
         removeTodo(todo, i) {
             this.todos.splice(i, 1)
         },
 
+        //CREARE UN NUOVO ARRAY DOVE PUSCHARE QUELLO CHE SCRIVE L'UTENTE NELL'INPUT
         addTodo() {
             if (this.newTodo !== '') {
                 this.newTodo = {
@@ -50,6 +28,7 @@ createApp({
             }
         },
 
+        // CAMBIARE LO STATO DA TRUE A FALSE E VICEVERSA PER SBARRARE IL LIST ITEM AL CLICK SU DI ESSO
         done(todo) {
             if (todo.done === false) {
                 todo.done = true
